@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.views.generic.simple import redirect_to
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -6,8 +7,8 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'lambdanews.views.home', name='home'),
-    # url(r'^lambdanews/', include('lambdanews.foo.urls')),
+    (r'^$', redirect_to, {'url': '/submissions', 'permanent': False}),
+    (r'^submissions/', include('lambdanews.news.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
