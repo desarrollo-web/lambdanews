@@ -23,7 +23,7 @@ class Submission(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        pass
+        return ('show', [self.pk])  
 
 
 class Comment(models.Model):
@@ -34,7 +34,7 @@ class Comment(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        pass
+        return ('reply_to_comment', [self.pk]) 
 
     def __unicode__(self):
         return self.text
