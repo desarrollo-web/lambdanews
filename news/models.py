@@ -1,10 +1,11 @@
+from __future__ import division
 from django.db import models
 
 # Create your models here.
 class SubmissionManager(models.Manager):
     
     def popular(self):
-        return sorted(models.Manager.get_query_set(self).all(), key=lambda x: x.points)
+        return sorted(models.Manager.get_query_set(self).all(), key=lambda x: x.points())
 
 
 class Submission(models.Model):
@@ -26,9 +27,8 @@ class Submission(models.Model):
 
     def points(self):
         from datetime import datetime, timedelta
-        from future import __division__
         age = (datetime.now() - self.created_at).seconds / 3600
-        return (self.upvotes-1) / (age+2)**Entry.GRAVITY
+        return (self.upvotes-1) / (age+2)**Submission.GRAVITY
     
     def __unicode__(self):
         return self.title

@@ -34,5 +34,5 @@ def show(request, s_id):
 
 def upvote(request, s_id):
     submission = get_object_or_404(Submission, pk=s_id)
-    submissions.upvote()
+    submission.upvote()
     return redirect(submission)
