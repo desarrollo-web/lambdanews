@@ -41,14 +41,9 @@ class Submission(models.Model):
         ordering = ['-created_at']
 
 class Comment(models.Model):
-    text = models.TextField()
+    text = models.TextField(verbose_name="")
     last_modified = models.DateTimeField(auto_now = True)
     submission = models.ForeignKey(Submission, null=True, blank=True, related_name='comments')
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='replies')
-
-    @models.permalink
-    def get_absolute_url(self):
-        return ('reply_to_comment', [self.pk]) 
 
     def __unicode__(self):
         return self.text

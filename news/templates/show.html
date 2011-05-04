@@ -3,4 +3,16 @@
     <h2>{{submission.title}}</h2>
     <span>{{submission.upvotes}} votes, submitted {{submission.created_at|timesince}} ago</span>
     <p>{{submission.text}}</p>
+<form action="{%url add_comment submission.pk%}" method="post" accept-charset="utf-8">
+    {%csrf_token%}
+    <table>
+        {{form}}    
+        <tr><td><input type="submit" value="Comment &rarr;"0></td></tr>
+    </table>
+</form>
+<ul>
+{%for comment in submission.comments.all%}
+    <li><p>{{comment.text}}</p>(added {{comment.last_modified|timesince}} ago)</li>
+{%endfor%}
+</ul>
 {%endblock%}

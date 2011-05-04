@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from news.models import Submission
-from news.forms import SubmissionForm
+from news.forms import SubmissionForm, CommentForm
 from django.template import RequestContext
 
 def list(request, by_popularity=False):
@@ -29,10 +29,23 @@ def show(request, s_id):
     submission = get_object_or_404(Submission, pk=s_id)
     return render_to_response(
              'show.html',
-             {'submission': submission}
+             {'submission': submission, 'form': CommentForm(initial={'submission': submission})},
+             context_instance=RequestContext(request)
             )
 
 def upvote(request, s_id):
     submission = get_object_or_404(Submission, pk=s_id)
     submission.upvote()
     return redirect(submission)
+
+def comment(request, s_id):
+    submission = get_object_or_404(Submission, pk=s_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(submission)
+        else:
+            print form.errors
+            return render_to_response('show.html', {'submission': submission, 'form': form},
+                    context_instance=RequestContext(request))

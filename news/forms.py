@@ -15,12 +15,6 @@ class CommentForm(forms.ModelForm):
             )
 
     
-    parent= forms.ModelChoiceField(
-            queryset=Comment.objects.all(),
-            widget = forms.HiddenInput(),
-            required = False
-            )
-
     class Meta:
         model = Comment
-        exclude = ('last_modified', 'submission', 'parent')
+        exclude = ('last_modified', 'parent')
