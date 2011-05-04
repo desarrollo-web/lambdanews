@@ -1,9 +1,11 @@
 from news.models import Submission, Comment
 from django import forms
 
-class Submission(forms.ModelForm):
+class SubmissionForm(forms.ModelForm):
     class Meta:
         model = Submission
+        exclude = ('created_at', 'upvotes')
+
 
 class CommentForm(forms.ModelForm):
     submission = forms.ModelChoiceField(

@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+{%block content%}
+<ol>
+    {%for s in submissions%}
+        <li>
+        <a href="{%if not s.url%}{%url show s.pk%}{%else%}{{s.url}}{%endif%}">{{s.title}}</a>
+            <p class="info">{{s.upvotes}} votes, created {{s.created_at|timesince}} ago</p>
+        </li>
+    {%endfor%}
+</ol>
+{%endblock%}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"0>
+
+    <title></title>
+    <style type="text/css" media="screen">
+    body {
+        margin-top: 1.0em;
+        background-color: #F6F6EF;
+        font-family: "Verdana";
+        color: #444;
+        margin: 0 auto;
+        width: 700px;
+        min-height: 1000px;
+    }
+    header{
+        background-color: #F60;
+    }
+
+    nav{
+        float:right;
+    }
+    html{
+        background-color: #fafafa;
+    }
+    a{
+        color: #555;
+        text-decoration: none;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <strong><a href="{%url popular%}">LambdaNews</a></strong>
+        <nav>
+            <a href="{%url newest%}">newest</a>
+            <strong><a href="{%url create%}">submit</a></strong>
+        </nav>
+    </header>
+    {%block content%}
+    {%endblock content%}
+</body>
+</html>

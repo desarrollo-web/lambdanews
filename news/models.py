@@ -1,8 +1,16 @@
 from django.db import models
 
 # Create your models here.
+class SubmissionManager(models.Manager):
+    
+    def popular(self):
+        return sorted(models.Manager.get_query_set(self).all(), key=lambda x: x.points)
+
+
 class Submission(models.Model):
     GRAVITY = 1.8
+
+    objects = SubmissionManager()
 
     title = models.CharField(max_length=240)
 
@@ -11,6 +19,10 @@ class Submission(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     upvotes = models.IntegerField(default=1)
+
+    def upvote(self):
+        self.upvotes += 1
+        self.save()
 
     def points(self):
         from datetime import datetime, timedelta
@@ -25,6 +37,8 @@ class Submission(models.Model):
     def get_absolute_url(self):
         return ('show', [self.pk])  
 
+    class Meta:
+        ordering = ['-created_at']
 
 class Comment(models.Model):
     text = models.TextField()
@@ -38,4 +52,6 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
-
+    
+    class Meta:
+        ordering = ['-last_modified']
