@@ -9,4 +9,5 @@ urlpatterns = patterns('lambdanews.news.views',
     url(r'^(?P<s_id>\d+)/upvote$', 'upvote', name='upvote'),
 
     url(r'^(?P<s_id>\d+)/comments$', 'comment', name='add_comment'),
+    url(r'^(?P<s_id>\d+)/comments/(?P<c_id>\d+)/edit$', 'edit_comment', name='edit_comment'),
 )

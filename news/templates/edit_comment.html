@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+{%block content%}
+<form action="{%url edit_comment comment.submission.pk comment.pk %}" method="post" accept-charset="utf-8">
+    {%csrf_token%}
+    <table>
+        {{form}}    
+        <tr><td><input type="submit" value="Update Comment &rarr;"0></td></tr>
+    </table>
+</form>
+{%endblock%}

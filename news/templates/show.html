@@ -12,7 +12,11 @@
 </form>
 <ul>
 {%for comment in submission.comments.all%}
-    <li><p>{{comment.text}}</p>(added {{comment.last_modified|timesince}} ago)</li>
+<li><p>{{comment.text}}</p>(added {{comment.last_modified|timesince}} ago)
+{%if comment in my_comments%}
+    | <a href="{%url edit_comment submission.pk comment.pk%}">edit</a>
+{%endif%}
+</li>
 {%endfor%}
 </ul>
 {%endblock%}
