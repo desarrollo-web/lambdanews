@@ -6,7 +6,7 @@
         <a href="{%url upvote s.pk%}"><img src="http://ycombinator.com/images/grayarrow.gif"/></a>
         <a href="{%if not s.url%}{%url show s.pk%}{%else%}{{s.url}}{%endif%}">{{s.title}}</a>
         <p class="info">{{s.upvotes}} votes, created {{s.created_at|timesince}} ago 
-        <a href="{%url show s.pk%}">{%if s.comments.count%}
+        | <a href="{%url show s.pk%}">{%if s.comments.count%}
                     {{s.comments.count}} comment{{s.comments.count|pluralize}}{%else%}discuss{%endif%}</a>
         </p>
         </li>

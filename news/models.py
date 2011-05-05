@@ -5,7 +5,9 @@ from django.db import models
 class SubmissionManager(models.Manager):
     
     def popular(self):
-        return sorted(models.Manager.get_query_set(self).all(), key=lambda x: x.points())
+        return sorted(models.Manager.get_query_set(self).all(),
+                      key=lambda x: x.points(),
+                      reverse=True)
 
 
 class Submission(models.Model):
