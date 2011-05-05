@@ -3,7 +3,13 @@
 <ol>
     {%for s in submissions%}
         <li>
-        <a href="{%url upvote s.pk%}"><img src="http://ycombinator.com/images/grayarrow.gif"/></a>
+        {%if s in my_submissions%}
+        *
+        {%else%}
+            {%if s not in my_votes%}
+            <a href="{%url upvote s.pk%}"><img src="http://ycombinator.com/images/grayarrow.gif"/></a>
+            {%endif%}
+        {%endif%}
         <a href="{%if not s.url%}{%url show s.pk%}{%else%}{{s.url}}{%endif%}">{{s.title}}</a>
         <p class="info">{{s.upvotes}} votes, created {{s.created_at|timesince}} ago 
         | <a href="{%url show s.pk%}">{%if s.comments.count%}
