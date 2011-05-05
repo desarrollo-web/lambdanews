@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from django.views.generic.simple import redirect_to
+from django.views.generic.simple import redirect_to, direct_to_template
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -8,6 +8,7 @@ from django.views.generic.simple import redirect_to
 urlpatterns = patterns('',
     # Examples:
     (r'^$', redirect_to, {'url': '/submissions', 'permanent': False}),
+    (r'^examen$', direct_to_template, {'template': 'examen.html'}),
     (r'^submissions/', include('lambdanews.news.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

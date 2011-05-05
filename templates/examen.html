@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Examen 1</title>
+    <style type="text/css" media="screen">
+        body{
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        em{
+            background-color: #FFF666;
+        }
+
+        a{
+            color: #06F;
+            text-decoration: none;
+        }
+
+
+        pre{
+            background-color: ghostWhite !important;
+            border: 1px solid #DEDEDE !important;
+        }
+
+        .important{
+            background-color: #A4FFA4;
+            font-size: 1.3em;
+            border 1px solid #35A635;
+        }
+
+        .thecode{
+            font-family: "Courier New", courier, monospace;
+            font-size: 1.1em;
+            background-color: #CDFFFF;
+            border: 1px solid #35A6A6;
+        }      
+    </style>
+  </head>
+  <body>
+    <h1>Desarrollo de aplicaciones web, examen 1: 6 de Mayo de 2011</h1>
+    <span class='important'>
+      <p>El examen consiste en reproducir este sitio: <a href=""></a></p>
+    </span>
+    <h2>Modo de entrega</h2>
+    
+    <p>El examen se entregará via <code>ssh</code> a un servidor git privado (mediante el comando <code>git push origin master</code>).
+    Sólo el autor del examen y yo tenemos acceso
+    a su repositorio. <strong>La fecha límite de entrega será el lunes 9 de mayo a las 00:00</strong></p>
+    
+    <p>Deben haber <a href="http://help.github.com/linux-key-setup/">generado</a> y <strong>entregado por correo</strong> su llave pública ssh (que se encuentra en <code>~/.ssh/id_rsa.pub</code>).</p>
+    
+    <p>Por razones de seguridad es necesario <em>modificar el archivo <code>~/.ssh/config</code> y agregar lo siguiente</em> :</p>
+    
+    <pre><code>Host git.lfborjas.com &#x000A;    Port 2888&#x000A;</code></pre>
+    
+    <p>Ejecutar:</p>
+    
+    <p><span class="thecode">git remote add origin git@git.lfborjas.com:<em>TU_NUMERO_DE_CUENTA</em>.git</span></p>
+    
+    <p>La ejecución de ello debería resultar en algo como:</p>
+    
+    <pre><code>The authenticity of host 'git.lfborjas.com (173.245.73.211)' can't be established.&#x000A;RSA key fingerprint is 2f:8e:8a:a0:72:f3:ad:1d:c3:d7:05:cf:d5:9b:6e:33.&#x000A;Are you sure you want to continue connecting (yes/no)?&#x000A;</code></pre>
+    
+    <p><strong>Antes de escribir <code>yes</code></strong> asegúrense que la segunda línea de esa salida sea <em>exactamente igual a lo anterior</em>,
+    si no lo es, escriban <code>no</code> y avísenme.</p>
+    
+    <p>Recuerden que si crean <em>nuevos</em> archivos dentro de la carpeta deberán ejecutar <code>git add &lt;ARCHIVO&gt;</code> para que git
+    esté al tanto de ellos <em>si no ejecutan <code>git add</code> sobre un archivo, no estará incluido cuando entreguen su examen</em></p>
+    
+    <p><em>Cada vez que hagan un cambio significativo</em> en el código, deberán ejecutar <code>git commit -m "Mensaje descriptivo"</code>
+    (Después de haber <em>agregado</em> los archivos pertinentes con <code>git add</code>). Puesto que git permite tener este tipo de
+    control sobre el código <em>no se aceptarán excusas de archivos perdidos por fallas técnicas o por cambios drásticos</em></p>
+    
+    <p>En cualquier momento del examen, luego de hacer <code>git commit</code>, siéntanse libres de ejecutar <code>git push origin master</code>
+    para sincronizar su repositorio local con el repositorio de entrega. <em>El estado de este repositorio después del
+    último push antes de la hora de terminación del examen es el que se tomará en cuenta para revisión</em>.</p>
+    
+    <h2>Descripción</h2>
+    
+    <p>El sitio es una copia simplificada de <a href="http://news.ycombinator.com/">hackernews</a>. La mayor parte de la funcionalidad
+    es evidente. Parte del examen es poder identificar los <em>recursos</em> que se deberán manejar y cómo hacerlo. Deberán
+    valerse de la ingeniería reversa mediante la inspección del código html generado y la funcionalidad de las páginas.</p>
+    
+    <ol>
+    <li>Un <strong>elemento de discusión</strong> está definido por un título o url y cierto contenido opcional. Si una url es provista
+    el vínculo de dicho elemento debe <em>dirigir a ella</em>. Si no es provista, se debe ir a la página de discusión del
+    elemento.</li>
+    <li>Al agregar un elemento, se verifica que la URL sea válida</li>
+    <li>Existen dos <em>vistas</em> para los elementos de discusión: en la <em>vista raíz</em> los elementos se encuentran ordenados
+    por <em>popularidad</em>, la cual se calcula con la siguiente fórmula:
+    <code>Popularidad = (puntos) / (horas_desde_creación+2)^1.8</code></li>
+    <li>En la segunda vista, los elementos se ordenan de manera <em>no creciente</em> por fecha de creación.</li>
+    <li>Tanto un <em>voto</em> como un <em>comentario</em> en un elemento de discusión elevan la <em>cantidad de puntos</em> de éste.</li>
+    <li>No se pueden crear elementos de discusión sin título ni comentarios sin texto</li>
+</ol>
+
+  </body>
+</html>
