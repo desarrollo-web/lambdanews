@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 from news.models import Submission, Comment
 from news.forms import SubmissionForm, CommentForm
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 
 def _update_session(session, key, val, coll=True):
     if key in session:
@@ -27,6 +28,7 @@ def list(request, by_popularity=False):
             context_instance = RequestContext(request)
             )
 
+@login_required
 def create(request): 
     return render_to_response(
                 'new.html',

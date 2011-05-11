@@ -160,4 +160,4 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
         'news.context_processors.participation')
 
 LOGIN_REDIRECT_URL = '/'
-
+LOGIN_URL = '/users/login'
