@@ -111,6 +111,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(ROOT_PATH, 'templates'),
     os.path.join(ROOT_PATH, 'news', 'templates'),
+    os.path.join(ROOT_PATH, 'users', 'templates'),
 )
 
 INSTALLED_APPS = (

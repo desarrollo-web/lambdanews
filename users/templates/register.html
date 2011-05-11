@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+{% block content %}
+    <form action="{%url register%}" method="post" accept-charset="utf-8">
+        {%csrf_token%}
+        <table>
+        {{form}}
+        <tr><td><input type="submit" value="Register"/></td></tr>
+        </table>
+    </form>
+{% endblock %}
