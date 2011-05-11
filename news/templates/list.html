@@ -12,9 +12,9 @@
         {%endif%}
         <a href="{%if not s.url%}{%url show s.pk%}{%else%}{{s.url}}{%endif%}">{{s.title}}</a>
         <p class="info">{{s.upvotes}} votes, created {{s.created_at|timesince}} ago 
+                by {{s.author.username}}
         | <a href="{%url show s.pk%}">{%if s.comments.count%}
                     {{s.comments.count}} comment{{s.comments.count|pluralize}}{%else%}discuss{%endif%}</a>
-                by {{s.author.username}}
         </p>
         </li>
     {%endfor%}

@@ -32,7 +32,7 @@ def list(request, by_popularity=False):
 def create(request): 
     return render_to_response(
                 'new.html',
-                {'form': SubmissionForm(), },
+                {'form': SubmissionForm(initial={'author': request.user}), },
                 context_instance=RequestContext(request)
             )
 
