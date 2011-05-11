@@ -35,7 +35,15 @@
         <strong><a href="{%url popular%}">LambdaNews</a></strong>
         <nav>
             <a href="{%url newest%}">newest</a>
-            <strong><a href="{%url create%}">submit</a></strong>
+           
+            {% if user.is_authenticated %}
+                <strong><a href="{%url create%}">submit</a></strong>
+                |
+                <em>{{user.username}}</em>
+                <a href={% url logout  %}>Logout</a>
+            {% else %}
+                <a href={% url login %}>Login</a>
+            {% endif %}
         </nav>
     </header>
     {%block content%}

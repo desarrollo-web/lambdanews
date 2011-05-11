@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+{% block content %}
+    <form action="{%url login%}" method="post" accept-charset="utf-8">
+        {%csrf_token%}
+        <table>
+        {{form}}
+        <tr><td><input type="submit" value="Login"/></td></tr>
+        <tr><td><input type="hidden" name="next" value="{{next}}"/></td></tr>
+        </table>
+    </form>
+{% endblock %}
