@@ -14,6 +14,7 @@
         <p class="info">{{s.upvotes}} votes, created {{s.created_at|timesince}} ago 
         | <a href="{%url show s.pk%}">{%if s.comments.count%}
                     {{s.comments.count}} comment{{s.comments.count|pluralize}}{%else%}discuss{%endif%}</a>
+                by {{s.author.username}}
         </p>
         </li>
     {%endfor%}
